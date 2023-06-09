@@ -1,0 +1,16 @@
+export const form = document.querySelector('.form');
+export const cityOutput = document.querySelector('.weather__city-output');
+export const forecast = document.querySelector('.forecast');
+export const degreeNow = document.querySelector('.weather__degree-excerpt--now');
+export const degreeFelt = document.querySelector('.weather__degree-excerpt--felt');
+export const detailWind = document.querySelector('.weather__detail-descr--wind');
+export const detailHumidity = document.querySelector('.weather__detail-descr--humidity');
+export const detailSunset = document.querySelector('.weather__detail-descr--sunset');
+export const detailSunrise = document.querySelector('.weather__detail-descr--sunrise');
+export const favoriteBtn = document.querySelector('.weather__city-btn');
+export const favorites = document.querySelector('.weather__favorites');
+export const forecasts = document.querySelector('.weather__forecasts');
+export const search = document.querySelector('.form__search');
+export const img = document.querySelector('.weather__forecast-img');
+export const favoriteTemplate = document.querySelector('#favorite-template');
+export const forecastTemplate = document.querySelector('#forecast-template');
