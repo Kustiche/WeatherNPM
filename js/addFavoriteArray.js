@@ -11,6 +11,8 @@ export function addFavoriteArray() {
     favoriteArray.push({
       name: cityName
     });
+  }else {
+    window.modalFavoriteError.showModal();
   }
 
   localStorage.setItem('weather', JSON.stringify(favoriteArray));

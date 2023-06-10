@@ -24,7 +24,7 @@
 50D:\Web\WeatherNPM\node_modules\moment\locale\ro.js133306894248705558 0
 75D:\Web\WeatherNPM\node_modules\node-gyp-build-optional-packages\optional.js133306894084394920 0
 60D:\Web\WeatherNPM\node_modules\@nodelib\fs.walk\out\index.js133307693125681206 0
-22D:\Web\WeatherNPM\dist133308630155096510 1
+22D:\Web\WeatherNPM\dist133308697357351091 1
 49D:\Web\WeatherNPM\node_modules\svgo\lib\parser.js133306894086786763 0
 60D:\Web\WeatherNPM\node_modules\msgpackr-extract\node_modules133306894092576244 1
 68D:\Web\WeatherNPM\node_modules\css-tree\lib\parser\parse-selector.js133306894089463619 0
@@ -83,7 +83,7 @@
 36D:\Web\WeatherNPM\node_modules\clone133306894084653636 1
 36D:\Web\WeatherNPM\node_modules\json5133306894085784441 1
 100D:\Web\WeatherNPM\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\syntax\config\mix.js133306894088388041 0
-28D:\Web\WeatherNPM\index.html133307594435688540 0
+28D:\Web\WeatherNPM\index.html133308697243627831 0
 62D:\Web\WeatherNPM\node_modules\caniuse-lite\data\regions\BN.js133306894087978042 0
 105D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\common\TokenStream.js133306894088855923 0
 83D:\Web\WeatherNPM\node_modules\csso\node_modules\css-tree\lib\syntax\node\String.js133306894089613676 0
@@ -115,7 +115,7 @@
 51D:\Web\WeatherNPM\node_modules\@eslint\eslintrc\lib133307693125933404 1
 70D:\Web\WeatherNPM\node_modules\caniuse-lite\data\features\svg-fonts.js133306894091326240 0
 77D:\Web\WeatherNPM\node_modules\caniuse-lite\data\features\childnode-remove.js133306894088598029 0
-27D:\Web\WeatherNPM\style.css133308614129852526 0
+27D:\Web\WeatherNPM\style.css133308631731740454 0
 94D:\Web\WeatherNPM\node_modules\css-select\node_modules\entities\lib\generated\encode-html.d.ts133306894087788040 0
 72D:\Web\WeatherNPM\node_modules\csso\cjs\restructure\3-disjoinRuleset.cjs133306894084340171 0
 100D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\css-select\lib\index.d.ts.map133306894086254419 0
@@ -131,7 +131,7 @@
 61D:\Web\WeatherNPM\node_modules\escape-string-regexp\readme.md133306894084145651 0
 61D:\Web\WeatherNPM\node_modules\@eslint-community\eslint-utils133307693125853384 1
 62D:\Web\WeatherNPM\node_modules\caniuse-lite\data\regions\JE.js133306894090388722 0
-31D:\Web\WeatherNPM\style.css.map133308614129852526 0
+31D:\Web\WeatherNPM\style.css.map133308631731740454 0
 98D:\Web\WeatherNPM\node_modules\css-select\node_modules\entities\lib\generated\encode-html.d.ts.map133306894087056734 0
 50D:\Web\WeatherNPM\node_modules\moment\locale\bo.js133306894247175610 0
 90D:\Web\WeatherNPM\node_modules\@parcel\optimizer-svgo\node_modules\css-select\package.json133306894085874421 0
@@ -3269,7 +3269,7 @@
 68D:\Web\WeatherNPM\node_modules\csso\node_modules\css-tree\lib\parser133306894089613676 1
 100D:\Web\WeatherNPM\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\syntax\pseudo\has.js133306894087658028 0
 58D:\Web\WeatherNPM\node_modules\moment\dist\locale\fr-ch.js133306894247593438 0
-45D:\Web\WeatherNPM\dist\index.3a01df49.css.map133307983513450623 0
+45D:\Web\WeatherNPM\dist\index.3a01df49.css.map133308695779251702 0
 41D:\Web\WeatherNPM\node_modules\json5\dist133306894085974428 1
 50D:\Web\WeatherNPM\node_modules\.bin\node-which.cmd133307693127733818 0
 54D:\Web\WeatherNPM\node_modules\@lezer\lr\dist\index.js133306894084394920 0
@@ -3943,7 +3943,7 @@
 46D:\Web\WeatherNPM\node_modules\fastq\README.md133307693125793390 0
 78D:\Web\WeatherNPM\node_modules\caniuse-lite\data\features\css3-cursors-grab.js133306894089613676 0
 52D:\Web\WeatherNPM\node_modules\fastq\test\example.ts133307693125833373 0
-40D:\Web\WeatherNPM\dist\rain.3c5bfc56.svg133307983513470632 0
+40D:\Web\WeatherNPM\dist\rain.3c5bfc56.svg133308695779251702 0
 86D:\Web\WeatherNPM\node_modules\@parcel\watcher\prebuilds\linux-x64\node.napi.musl.node133306894087988035 0
 52D:\Web\WeatherNPM\node_modules\fastq\test\promise.js133307693125524929 0
 70D:\Web\WeatherNPM\node_modules\@swc\helpers\cjs\_apply_decs_2203_r.cjs133306894083989399 0
@@ -7356,7 +7356,7 @@
 94D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\plugins.js133306894087086733 0
 104D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\lexer\match-graph.js133306894088268027 0
 98D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeAttrs.js133306894087216732 0
-33D:\Web\WeatherNPM\dist\index.html133307983513880625 0
+33D:\Web\WeatherNPM\dist\index.html133308697357351091 0
 97D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeDesc.js133306894087266745 0
 100D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeDoctype.js133306894087326738 0
 106D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\svgo\plugins\removeEditorsNSData.js133306894087356728 0
@@ -7488,7 +7488,7 @@
 60D:\Web\WeatherNPM\node_modules\@mischnic\json-sourcemap\dist133306894084693664 1
 102D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\convertor\index.js133306894087798058 0
 98D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\common\List.js133306894088238031 0
-42D:\Web\WeatherNPM\dist\clouds.48441d01.svg133307983513880625 0
+42D:\Web\WeatherNPM\dist\clouds.48441d01.svg133308695779887482 0
 110D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\common\OffsetToLocation.js133306894088578069 0
 99D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\dist\csstree.min.js133306894087126768 0
 85D:\Web\WeatherNPM\node_modules\@parcel\optimizer-htmlnano\node_modules\css-select\lib133306894087026745 1
@@ -7576,7 +7576,7 @@
 51D:\Web\WeatherNPM\node_modules\@parcel\core\LICENSE133306894086094420 0
 56D:\Web\WeatherNPM\node_modules\@parcel\core\package.json133306894089185076 0
 68D:\Web\WeatherNPM\node_modules\@parcel\core\test\BundleGraph.test.js133306894087276736 0
-45D:\Web\WeatherNPM\dist\Manrope.26c823ec.woff2133307983513390650 0
+45D:\Web\WeatherNPM\dist\Manrope.26c823ec.woff2133308695779095356 0
 57D:\Web\WeatherNPM\node_modules\@parcel\core\test\fixtures133306894089463619 1
 63D:\Web\WeatherNPM\node_modules\@parcel\core\test\Parcel.test.js133306894088658030 0
 68D:\Web\WeatherNPM\node_modules\@parcel\core\test\PublicAsset.test.js133306894088855923 0
@@ -7833,14 +7833,14 @@
 46D:\Web\WeatherNPM\node_modules\.bin\semver.cmd133306894092576244 0
 44D:\Web\WeatherNPM\node_modules\.bin\svgo.ps1133306894092576244 0
 62D:\Web\WeatherNPM\node_modules\.bin\update-browserslist-db.cmd133306894092576244 0
-40D:\Web\WeatherNPM\js\addFavoriteArray.js133308619320920928 0
+40D:\Web\WeatherNPM\js\addFavoriteArray.js133308697065079129 0
 38D:\Web\WeatherNPM\js\deleteFavorite.js133302669165706177 0
 37D:\Web\WeatherNPM\js\favoriteArray.js133307779549685447 0
 37D:\Web\WeatherNPM\js\forecastArray.js133305336032811565 0
 31D:\Web\WeatherNPM\img\clear.png133307035268341207 0
 30D:\Web\WeatherNPM\img\rain.png133307034859135561 0
 32D:\Web\WeatherNPM\img\sprite.svg133298489769704508 0
-41D:\Web\WeatherNPM\dist\index.3a01df49.css133307983513370671 0
-40D:\Web\WeatherNPM\dist\index.fbb3188c.js133308630155065700 0
-44D:\Web\WeatherNPM\dist\index.fbb3188c.js.map133308630155096510 0
-42D:\Web\WeatherNPM\dist\sprite.ece088bb.svg133307983513470632 0
+41D:\Web\WeatherNPM\dist\index.3a01df49.css133308695779251702 0
+40D:\Web\WeatherNPM\dist\index.fbb3188c.js133308697357077374 0
+44D:\Web\WeatherNPM\dist\index.fbb3188c.js.map133308697357077374 0
+42D:\Web\WeatherNPM\dist\sprite.ece088bb.svg133308695779407869 0

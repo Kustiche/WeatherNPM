@@ -4481,6 +4481,7 @@ function addFavoriteArray() {
     if (cityArray === undefined) (0, _favoriteArrayJs.favoriteArray).push({
         name: cityName
     });
+    else window.modalFavoriteError.showModal();
     localStorage.setItem("weather", JSON.stringify((0, _favoriteArrayJs.favoriteArray)));
     (0, _renderJs.render)();
 }
