@@ -1,6 +1,6 @@
 import { favoriteArray } from "./favoriteArray.js";
 import { render } from "./render.js";
-import { cityOutput, forecast, degreeNow, degreeFelt, detailHumidity, detailSunrise, detailSunset, detailWind } from "./view.js";
+import { cityOutput } from "./view.js";
 
 
 export function addFavoriteArray() {
@@ -9,14 +9,7 @@ export function addFavoriteArray() {
 
   if (cityArray === undefined) {
     favoriteArray.push({
-      name: cityName,
-      forecast: forecast.textContent,
-      degreeNow: degreeNow.textContent,
-      degreeFelt: degreeFelt.textContent,
-      detailHumidity: detailHumidity.textContent,
-      detailSunrise: detailSunrise.textContent,
-      detailSunset: detailSunset.textContent,
-      detailWind: detailWind.textContent
+      name: cityName
     });
   }
 

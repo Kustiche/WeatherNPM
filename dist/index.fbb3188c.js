@@ -4479,14 +4479,7 @@ function addFavoriteArray() {
     const cityName = (0, _viewJs.cityOutput).textContent;
     const cityArray = (0, _favoriteArrayJs.favoriteArray).find((city)=>city.name === cityName);
     if (cityArray === undefined) (0, _favoriteArrayJs.favoriteArray).push({
-        name: cityName,
-        forecast: (0, _viewJs.forecast).textContent,
-        degreeNow: (0, _viewJs.degreeNow).textContent,
-        degreeFelt: (0, _viewJs.degreeFelt).textContent,
-        detailHumidity: (0, _viewJs.detailHumidity).textContent,
-        detailSunrise: (0, _viewJs.detailSunrise).textContent,
-        detailSunset: (0, _viewJs.detailSunset).textContent,
-        detailWind: (0, _viewJs.detailWind).textContent
+        name: cityName
     });
     localStorage.setItem("weather", JSON.stringify((0, _favoriteArrayJs.favoriteArray)));
     (0, _renderJs.render)();
@@ -4549,27 +4542,18 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "cityForecast", ()=>cityForecast);
 var _viewJs = require("./view.js");
-var _favoriteArrayJs = require("./favoriteArray.js");
 var _weatherAPIJs = require("./weatherAPI.js");
 function cityForecast(e) {
     const isDesiredFavoriteBtn = e.target.className === "weather__favorite-excerpt btn-reset";
     if (isDesiredFavoriteBtn) {
         const name = e.target.textContent;
-        const cityArray = (0, _favoriteArrayJs.favoriteArray).find((favorite)=>favorite.name === name);
-        const { name: cityName , forecast: cityForecast , detailWind: cityDetailWind , detailSunset: cityDetailSunset , detailSunrise: cityDetailSunrise , detailHumidity: cityDetailHumidity , degreeNow: cityDegreeNow , degreeFelt: cityDegreeFelt  } = cityArray;
-        (0, _viewJs.cityOutput).textContent = cityName;
-        (0, _viewJs.forecast).textContent = cityForecast;
-        (0, _viewJs.degreeNow).textContent = cityDegreeNow;
-        (0, _viewJs.degreeFelt).textContent = cityDegreeFelt;
-        (0, _viewJs.detailHumidity).textContent = cityDetailHumidity;
-        (0, _viewJs.detailSunrise).textContent = cityDetailSunrise;
-        (0, _viewJs.detailSunset).textContent = cityDetailSunset;
-        (0, _viewJs.detailWind).textContent = cityDetailWind;
+        (0, _viewJs.cityOutput).textContent = name;
+        (0, _weatherAPIJs.weatherAPI)(name);
         (0, _weatherAPIJs.forecastAPI)(name);
     }
 }
 
-},{"./view.js":"2GA9o","./favoriteArray.js":"aAUW5","./weatherAPI.js":"spApL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i8oZC":[function(require,module,exports) {
+},{"./weatherAPI.js":"spApL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./view.js":"2GA9o"}],"i8oZC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localCityForecast", ()=>localCityForecast);
@@ -4584,16 +4568,9 @@ function localCityForecast(city) {
             (0, _weatherAPIJs.forecastAPI)(city);
         }
     } else {
-        const { name: cityName , forecast: cityForecast , detailWind: cityDetailWind , detailSunset: cityDetailSunset , detailSunrise: cityDetailSunrise , detailHumidity: cityDetailHumidity , degreeNow: cityDegreeNow , degreeFelt: cityDegreeFelt  } = cityArray;
-        (0, _viewJs.cityOutput).textContent = cityName;
-        (0, _viewJs.forecast).textContent = cityForecast;
-        (0, _viewJs.degreeNow).textContent = cityDegreeNow;
-        (0, _viewJs.degreeFelt).textContent = cityDegreeFelt;
-        (0, _viewJs.detailHumidity).textContent = cityDetailHumidity;
-        (0, _viewJs.detailSunrise).textContent = cityDetailSunrise;
-        (0, _viewJs.detailSunset).textContent = cityDetailSunset;
-        (0, _viewJs.detailWind).textContent = cityDetailWind;
-        (0, _weatherAPIJs.forecastAPI)(cityName);
+        (0, _viewJs.cityOutput).textContent = cityArray.name;
+        (0, _weatherAPIJs.weatherAPI)(cityArray.name);
+        (0, _weatherAPIJs.forecastAPI)(cityArray.name);
     }
 }
 
