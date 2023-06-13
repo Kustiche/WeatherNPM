@@ -6,7 +6,7 @@ import { cityForecast } from "./cityForecast.js";
 import { render } from "./render.js";
 import { localCityForecast } from "./localCityForecast.js";
 import { favoriteArray } from "./favoriteArray.js";
-localStorage.clear()
+
 let cityName = '';
 const isEmptyOutput = cityOutput.textContent === '';
 
