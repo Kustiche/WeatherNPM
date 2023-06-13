@@ -13,25 +13,15 @@ export function weatherAPI(cityName) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      const {main: {...mainInformation}, sys: {...sysInformation}, weather: [{main}], wind: {speed}} = data;
-      const secondsSunset = new Date(sysInformation.sunset * 1000);
-      const secondsSunrise = new Date(sysInformation.sunrise * 1000);
+      const {main: {temp, feels_like, humidity}, sys: {sunset, sunrise}, weather: [{main, icon}], wind: {speed}} = data;
+      const secondsSunset = new Date(sunset * 1000);
+      const secondsSunrise = new Date(sunrise * 1000);
 
       forecast.textContent = main;
-
-      if (main === 'Clouds') {
-        img.src = 'https://openweathermap.org/img/wn/03d@2x.png';
-      }else if(main === 'Rain') {
-        img.src = 'https://openweathermap.org/img/wn/10d@2x.png';
-      }else if(main === 'Clear') {
-        img.src = 'https://openweathermap.org/img/wn/01d@2x.png';
-      }else if(main === 'Mist') {
-        img.src = 'https://openweathermap.org/img/wn/50d@2x.png';
-      };
-
-      degreeNow.textContent = Math.round(mainInformation.temp+ - 273);
-      degreeFelt.textContent = Math.round(mainInformation.feels_like+ - 273);
-      detailHumidity.textContent = mainInformation.humidity + '%';
+      img.src = `https://openweathermap.org/img/wn/${icon}@2x.png`
+      degreeNow.textContent = Math.round(temp+ - 273);
+      degreeFelt.textContent = Math.round(feels_like+ - 273);
+      detailHumidity.textContent = humidity + '%';
 
       detailSunset.textContent = moment(secondsSunset).format('kk:mm');
       detailSunrise.textContent = moment(secondsSunrise).format('kk:mm');

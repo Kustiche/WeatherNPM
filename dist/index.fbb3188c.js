@@ -582,6 +582,7 @@ var _cityForecastJs = require("./cityForecast.js");
 var _renderJs = require("./render.js");
 var _localCityForecastJs = require("./localCityForecast.js");
 var _favoriteArrayJs = require("./favoriteArray.js");
+localStorage.clear();
 let cityName = "";
 const isEmptyOutput = (0, _viewJs.cityOutput).textContent === "";
 if (isEmptyOutput) {
@@ -689,17 +690,14 @@ function weatherAPI(cityName) {
     serverUrl = "http://api.openweathermap.org/data/2.5/weather";
     const url = `${serverUrl}?q=${cityName}&appid=${apiKey}`;
     fetch(url).then((response)=>response.json()).then((data)=>{
-        const { main: { ...mainInformation } , sys: { ...sysInformation } , weather: [{ main  }] , wind: { speed  }  } = data;
-        const secondsSunset = new Date(sysInformation.sunset * 1000);
-        const secondsSunrise = new Date(sysInformation.sunrise * 1000);
+        const { main: { temp , feels_like , humidity  } , sys: { sunset , sunrise  } , weather: [{ main , icon  }] , wind: { speed  }  } = data;
+        const secondsSunset = new Date(sunset * 1000);
+        const secondsSunrise = new Date(sunrise * 1000);
         (0, _viewJs.forecast).textContent = main;
-        if (main === "Clouds") (0, _viewJs.img).src = "https://openweathermap.org/img/wn/03d@2x.png";
-        else if (main === "Rain") (0, _viewJs.img).src = "https://openweathermap.org/img/wn/10d@2x.png";
-        else if (main === "Clear") (0, _viewJs.img).src = "https://openweathermap.org/img/wn/01d@2x.png";
-        else if (main === "Mist") (0, _viewJs.img).src = "https://openweathermap.org/img/wn/50d@2x.png";
-        (0, _viewJs.degreeNow).textContent = Math.round(mainInformation.temp + -273);
-        (0, _viewJs.degreeFelt).textContent = Math.round(mainInformation.feels_like + -273);
-        (0, _viewJs.detailHumidity).textContent = mainInformation.humidity + "%";
+        (0, _viewJs.img).src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+        (0, _viewJs.degreeNow).textContent = Math.round(temp + -273);
+        (0, _viewJs.degreeFelt).textContent = Math.round(feels_like + -273);
+        (0, _viewJs.detailHumidity).textContent = humidity + "%";
         (0, _viewJs.detailSunset).textContent = (0, _momentDefault.default)(secondsSunset).format("kk:mm");
         (0, _viewJs.detailSunrise).textContent = (0, _momentDefault.default)(secondsSunrise).format("kk:mm");
         (0, _viewJs.detailWind).textContent = speed + "km/h";
@@ -743,18 +741,15 @@ function createForecastElements(cityName) {
     else {
         (0, _viewJs.forecasts).textContent = "";
         for(let index = 0; index < 8; index++){
-            const { dt: dateTime , main: mainInformation , weather: [weatherInformation]  } = (0, _forecastArrayJs.forecastArray)[index];
+            const { dt: dateTime , main: { temp , feels_like  } , weather: [{ main , icon  }]  } = (0, _forecastArrayJs.forecastArray)[index];
             const item = (0, _viewJs.forecastTemplate).content.cloneNode(true);
             const dateTimeSeconds = new Date(dateTime * 1000);
             item.querySelector(".weather__date").textContent = (0, _momentDefault.default)(dateTimeSeconds).format("D MMM");
             item.querySelector(".weather__time").textContent = (0, _momentDefault.default)(dateTimeSeconds).format("kk:mm");
-            item.querySelector(".weather__temperature").textContent = `Temperature: ${Math.round(mainInformation.temp + -273)}`;
-            item.querySelector(".weather__temperature--feels-like").textContent = `Feels like: ${Math.round(mainInformation.feels_like + -273)}`;
-            item.querySelector(".forecast-next-day").textContent = weatherInformation.main;
-            if (weatherInformation.main === "Clouds") item.querySelector(".weather__forecast-img--next-day").src = "https://openweathermap.org/img/wn/03d@2x.png";
-            else if (weatherInformation.main === "Rain") item.querySelector(".weather__forecast-img--next-day").src = "https://openweathermap.org/img/wn/10d@2x.png";
-            else if (weatherInformation.main === "Clear") item.querySelector(".weather__forecast-img--next-day").src = "https://openweathermap.org/img/wn/01d@2x.png";
-            else if (weatherInformation.main === "Mist") item.querySelector(".weather__forecast-img--next-day").src = "https://openweathermap.org/img/wn/50d@2x.png";
+            item.querySelector(".weather__temperature").textContent = `Temperature: ${Math.round(temp + -273)}`;
+            item.querySelector(".weather__temperature--feels-like").textContent = `Feels like: ${Math.round(feels_like + -273)}`;
+            item.querySelector(".forecast-next-day").textContent = main;
+            item.querySelector(".weather__forecast-img--next-day").src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
             (0, _viewJs.forecasts).append(item);
         }
     }
