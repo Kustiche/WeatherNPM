@@ -582,7 +582,6 @@ var _cityForecastJs = require("./cityForecast.js");
 var _renderJs = require("./render.js");
 var _localCityForecastJs = require("./localCityForecast.js");
 var _favoriteArrayJs = require("./favoriteArray.js");
-localStorage.clear();
 let cityName = "";
 const isEmptyOutput = (0, _viewJs.cityOutput).textContent === "";
 if (isEmptyOutput) {
@@ -686,36 +685,40 @@ var _moment = require("moment");
 var _momentDefault = parcelHelpers.interopDefault(_moment);
 let serverUrl = "";
 const apiKey = "44c1a218aa3a304cad0f0d8be43fa9fb";
-function weatherAPI(cityName) {
+async function weatherAPI(cityName) {
     serverUrl = "http://api.openweathermap.org/data/2.5/weather";
     const url = `${serverUrl}?q=${cityName}&appid=${apiKey}`;
-    fetch(url).then((response)=>response.json()).then((data)=>{
-        const { main: { temp , feels_like , humidity  } , sys: { sunset , sunrise  } , weather: [{ main , icon  }] , wind: { speed  }  } = data;
-        const secondsSunset = new Date(sunset * 1000);
-        const secondsSunrise = new Date(sunrise * 1000);
-        (0, _viewJs.forecast).textContent = main;
-        (0, _viewJs.img).src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-        (0, _viewJs.degreeNow).textContent = Math.round(temp + -273);
-        (0, _viewJs.degreeFelt).textContent = Math.round(feels_like + -273);
-        (0, _viewJs.detailHumidity).textContent = humidity + "%";
-        (0, _viewJs.detailSunset).textContent = (0, _momentDefault.default)(secondsSunset).format("kk:mm");
-        (0, _viewJs.detailSunrise).textContent = (0, _momentDefault.default)(secondsSunrise).format("kk:mm");
-        (0, _viewJs.detailWind).textContent = speed + "km/h";
-    }).catch(()=>{
+    let response = "";
+    try {
+        response = await fetch(url);
+        if (response.status === 404) throw new Error("Такого города нет!");
+    } catch (err) {
         window.modalError.showModal();
         (0, _viewJs.cityOutput).textContent = "";
         (0, _viewJs.search).value = "";
-    });
+    }
+    const data = await response.json();
+    const { main: { temp , feels_like , humidity  } , sys: { sunset , sunrise  } , weather: [{ main , icon  }] , wind: { speed  }  } = data;
+    const secondsSunset = new Date(sunset * 1000);
+    const secondsSunrise = new Date(sunrise * 1000);
+    (0, _viewJs.forecast).textContent = main;
+    (0, _viewJs.img).src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    (0, _viewJs.degreeNow).textContent = Math.round(temp + -273);
+    (0, _viewJs.degreeFelt).textContent = Math.round(feels_like + -273);
+    (0, _viewJs.detailHumidity).textContent = humidity + "%";
+    (0, _viewJs.detailSunset).textContent = (0, _momentDefault.default)(secondsSunset).format("kk:mm");
+    (0, _viewJs.detailSunrise).textContent = (0, _momentDefault.default)(secondsSunrise).format("kk:mm");
+    (0, _viewJs.detailWind).textContent = speed + "km/h";
 }
-function forecastAPI(cityName) {
+async function forecastAPI(cityName) {
     serverUrl = "http://api.openweathermap.org/data/2.5/forecast";
     const url = `${serverUrl}?q=${cityName}&appid=${apiKey}`;
-    fetch(url).then((response)=>response.json()).then((data)=>{
-        (0, _forecastArrayJs.cleaningForecastArray)();
-        const { list: [...information]  } = data;
-        for(let index = 0; index < 8; index++)(0, _forecastArrayJs.forecastArray).push(information[index]);
-        (0, _createForecastElementsJs.createForecastElements)(cityName);
-    });
+    const response = await fetch(url);
+    const data = await response.json();
+    (0, _forecastArrayJs.cleaningForecastArray)();
+    const { list: [...information]  } = data;
+    for(let index = 0; index < 8; index++)(0, _forecastArrayJs.forecastArray).push(information[index]);
+    (0, _createForecastElementsJs.createForecastElements)(cityName);
 }
 
 },{"./view.js":"2GA9o","./forecastArray.js":"4DNUx","./createForecastElements.js":"aA6W0","moment":"jwcsj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4DNUx":[function(require,module,exports) {
@@ -4485,8 +4488,7 @@ function addFavoriteArray() {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "favoriteArray", ()=>favoriteArray);
-let favoriteArray = JSON.parse(localStorage.getItem("weather"));
-if (favoriteArray === null) favoriteArray = [];
+let favoriteArray = JSON.parse(localStorage.getItem("weather")) ?? [];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9k0mC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

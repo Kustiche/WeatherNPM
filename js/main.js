@@ -26,6 +26,7 @@ form.addEventListener('submit', (e) => {
   cityOutput.textContent = search.value;
 
   weatherAPI(cityName);
+
   forecastAPI(cityName);
 });
 

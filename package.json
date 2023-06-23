@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "pr": "npx parcel index.html"
+    "pr": "npx parcel index.html --open"
   },
   "author": "",
   "license": "ISC",
