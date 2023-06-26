@@ -9,7 +9,7 @@ export function deleteFavorite(e) {
     const favorite = e.target.closest('.weather__favorite');
     const cityName = favorite.querySelector('.weather__favorite-excerpt');
 
-    const arrayIndex = favoriteArray.findIndex((favorite) => favorite.name === cityName.textContent);
+    const arrayIndex = favoriteArray.findIndex((favorite) => favorite === cityName.textContent);
 
     favoriteArray.splice(arrayIndex, 1);
 

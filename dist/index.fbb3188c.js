@@ -582,7 +582,6 @@ var _cityForecastJs = require("./cityForecast.js");
 var _renderJs = require("./render.js");
 var _localCityForecastJs = require("./localCityForecast.js");
 var _favoriteArrayJs = require("./favoriteArray.js");
-z;
 let cityName = "";
 const isEmptyOutput = (0, _viewJs.cityOutput).textContent === "";
 if (isEmptyOutput) {
@@ -759,7 +758,7 @@ function createForecastElements(cityName) {
     }
 }
 
-},{"./view.js":"2GA9o","./forecastArray.js":"4DNUx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","moment":"jwcsj"}],"jwcsj":[function(require,module,exports) {
+},{"./view.js":"2GA9o","./forecastArray.js":"4DNUx","moment":"jwcsj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jwcsj":[function(require,module,exports) {
 //! moment.js
 //! version : 2.29.4
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -4476,10 +4475,8 @@ var _renderJs = require("./render.js");
 var _viewJs = require("./view.js");
 function addFavoriteArray() {
     const cityName = (0, _viewJs.cityOutput).textContent;
-    const cityArray = (0, _favoriteArrayJs.favoriteArray).find((city)=>city.name === cityName);
-    if (cityArray === undefined) (0, _favoriteArrayJs.favoriteArray).push({
-        name: cityName
-    });
+    const cityArray = (0, _favoriteArrayJs.favoriteArray).find((city)=>city === cityName);
+    if (cityArray === undefined) (0, _favoriteArrayJs.favoriteArray).push(cityName);
     else window.modalFavoriteError.showModal();
     localStorage.setItem("weather", JSON.stringify((0, _favoriteArrayJs.favoriteArray)));
     (0, _renderJs.render)();
@@ -4501,7 +4498,7 @@ var _viewJs = require("./view.js");
 function render() {
     (0, _viewJs.favorites).textContent = "";
     (0, _favoriteArrayJs.favoriteArray).forEach((favorite)=>{
-        (0, _addFavoriteDomJs.addFavoriteDom)(favorite.name);
+        (0, _addFavoriteDomJs.addFavoriteDom)(favorite);
     });
 }
 
@@ -4530,7 +4527,7 @@ function deleteFavorite(e) {
     if (isDesiredBtn) {
         const favorite = e.target.closest(".weather__favorite");
         const cityName = favorite.querySelector(".weather__favorite-excerpt");
-        const arrayIndex = (0, _favoriteArrayJs.favoriteArray).findIndex((favorite)=>favorite.name === cityName.textContent);
+        const arrayIndex = (0, _favoriteArrayJs.favoriteArray).findIndex((favorite)=>favorite === cityName.textContent);
         (0, _favoriteArrayJs.favoriteArray).splice(arrayIndex, 1);
         (0, _renderJs.render)();
     }
@@ -4552,7 +4549,7 @@ function cityForecast(e) {
     }
 }
 
-},{"./weatherAPI.js":"spApL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./view.js":"2GA9o"}],"i8oZC":[function(require,module,exports) {
+},{"./view.js":"2GA9o","./weatherAPI.js":"spApL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i8oZC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "localCityForecast", ()=>localCityForecast);
@@ -4560,7 +4557,7 @@ var _viewJs = require("./view.js");
 var _favoriteArrayJs = require("./favoriteArray.js");
 var _weatherAPIJs = require("./weatherAPI.js");
 function localCityForecast(city) {
-    const cityArray = (0, _favoriteArrayJs.favoriteArray).find((favorite)=>favorite.name === city);
+    const cityArray = (0, _favoriteArrayJs.favoriteArray).find((favorite)=>favorite === city);
     if (cityArray === undefined) {
         if (city !== "") {
             (0, _weatherAPIJs.weatherAPI)(city);
@@ -4568,8 +4565,8 @@ function localCityForecast(city) {
         }
     } else {
         (0, _viewJs.cityOutput).textContent = cityArray.name;
-        (0, _weatherAPIJs.weatherAPI)(cityArray.name);
-        (0, _weatherAPIJs.forecastAPI)(cityArray.name);
+        (0, _weatherAPIJs.weatherAPI)(cityArray);
+        (0, _weatherAPIJs.forecastAPI)(cityArray);
     }
 }
 
