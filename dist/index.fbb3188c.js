@@ -582,6 +582,7 @@ var _cityForecastJs = require("./cityForecast.js");
 var _renderJs = require("./render.js");
 var _localCityForecastJs = require("./localCityForecast.js");
 var _favoriteArrayJs = require("./favoriteArray.js");
+z;
 let cityName = "";
 const isEmptyOutput = (0, _viewJs.cityOutput).textContent === "";
 if (isEmptyOutput) {
@@ -692,7 +693,7 @@ async function weatherAPI(cityName) {
     try {
         response = await fetch(url);
         if (response.status === 404) throw new Error("Такого города нет!");
-    } catch (err) {
+    } catch  {
         window.modalError.showModal();
         (0, _viewJs.cityOutput).textContent = "";
         (0, _viewJs.search).value = "";

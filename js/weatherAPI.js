@@ -16,7 +16,7 @@ export async function weatherAPI(cityName) {
     if (response.status === 404) {
       throw new Error('Такого города нет!');
     };
-  } catch (err) {
+  } catch {
     window.modalError.showModal();
     cityOutput.textContent = '';
     search.value = '';
