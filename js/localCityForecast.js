@@ -3,9 +3,9 @@ import { favoriteArray } from "./favoriteArray.js";
 import { forecastAPI, weatherAPI } from "./weatherAPI.js";
 
 export function localCityForecast(city) {
-  const cityArray = favoriteArray.find((favorite) => favorite === city);
+  const cityArray = favoriteArray.has(city);
 
-  if (cityArray === undefined) {
+  if (cityArray === false) {
     if (city !== '') {
       weatherAPI(city);
       forecastAPI(city);

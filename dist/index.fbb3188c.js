@@ -604,7 +604,6 @@ if (isEmptyOutput) {
     (0, _cityForecastJs.cityForecast)(e);
     localStorage.setItem("cityName", JSON.stringify((0, _viewJs.cityOutput).textContent));
     (0, _deleteFavoriteJs.deleteFavorite)(e);
-    localStorage.setItem("weather", JSON.stringify((0, _favoriteArrayJs.favoriteArray)));
 });
 
 },{"./view.js":"2GA9o","./weatherAPI.js":"spApL","./addFavoriteArray.js":"jAA3O","./deleteFavorite.js":"2xOfI","./cityForecast.js":"6G3iY","./render.js":"9k0mC","./localCityForecast.js":"i8oZC","./favoriteArray.js":"aAUW5"}],"2GA9o":[function(require,module,exports) {
@@ -4475,10 +4474,12 @@ var _renderJs = require("./render.js");
 var _viewJs = require("./view.js");
 function addFavoriteArray() {
     const cityName = (0, _viewJs.cityOutput).textContent;
-    const cityArray = (0, _favoriteArrayJs.favoriteArray).find((city)=>city === cityName);
-    if (cityArray === undefined) (0, _favoriteArrayJs.favoriteArray).push(cityName);
+    let cityArray = (0, _favoriteArrayJs.favoriteArray).has(cityName);
+    if (cityArray === false) (0, _favoriteArrayJs.favoriteArray).add(cityName);
     else window.modalFavoriteError.showModal();
-    localStorage.setItem("weather", JSON.stringify((0, _favoriteArrayJs.favoriteArray)));
+    localStorage.setItem("weather", JSON.stringify([
+        ...(0, _favoriteArrayJs.favoriteArray)
+    ]));
     (0, _renderJs.render)();
 }
 
@@ -4486,7 +4487,7 @@ function addFavoriteArray() {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "favoriteArray", ()=>favoriteArray);
-let favoriteArray = JSON.parse(localStorage.getItem("weather")) ?? [];
+let favoriteArray = new Set(JSON.parse(localStorage.getItem("weather"))) ?? new Set();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9k0mC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -4527,8 +4528,13 @@ function deleteFavorite(e) {
     if (isDesiredBtn) {
         const favorite = e.target.closest(".weather__favorite");
         const cityName = favorite.querySelector(".weather__favorite-excerpt");
-        const arrayIndex = (0, _favoriteArrayJs.favoriteArray).findIndex((favorite)=>favorite === cityName.textContent);
-        (0, _favoriteArrayJs.favoriteArray).splice(arrayIndex, 1);
+        (0, _favoriteArrayJs.favoriteArray).forEach((item)=>{
+            if (item === cityName.textContent) (0, _favoriteArrayJs.favoriteArray).delete(item);
+        });
+        if ((0, _favoriteArrayJs.favoriteArray) === {}) localStorage.setItem("weather", JSON.stringify(null));
+        else localStorage.setItem("weather", JSON.stringify([
+            ...(0, _favoriteArrayJs.favoriteArray)
+        ]));
         (0, _renderJs.render)();
     }
 }
@@ -4557,8 +4563,8 @@ var _viewJs = require("./view.js");
 var _favoriteArrayJs = require("./favoriteArray.js");
 var _weatherAPIJs = require("./weatherAPI.js");
 function localCityForecast(city) {
-    const cityArray = (0, _favoriteArrayJs.favoriteArray).find((favorite)=>favorite === city);
-    if (cityArray === undefined) {
+    const cityArray = (0, _favoriteArrayJs.favoriteArray).has(city);
+    if (cityArray === false) {
         if (city !== "") {
             (0, _weatherAPIJs.weatherAPI)(city);
             (0, _weatherAPIJs.forecastAPI)(city);

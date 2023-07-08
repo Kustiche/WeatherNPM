@@ -38,5 +38,4 @@ favorites.addEventListener('click', (e) => {
   cityForecast(e);
   localStorage.setItem('cityName', JSON.stringify(cityOutput.textContent));
   deleteFavorite(e);
-  localStorage.setItem('weather', JSON.stringify(favoriteArray));
 });

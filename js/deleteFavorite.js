@@ -9,10 +9,17 @@ export function deleteFavorite(e) {
     const favorite = e.target.closest('.weather__favorite');
     const cityName = favorite.querySelector('.weather__favorite-excerpt');
 
-    const arrayIndex = favoriteArray.findIndex((favorite) => favorite === cityName.textContent);
+    favoriteArray.forEach((item) => {
+      if (item === cityName.textContent) {
+        favoriteArray.delete(item);
+      }
+    })
 
-    favoriteArray.splice(arrayIndex, 1);
-
+    if (favoriteArray === {}) {
+      localStorage.setItem('weather', JSON.stringify(null));
+    }else {
+      localStorage.setItem('weather', JSON.stringify([...favoriteArray]));
+    };
     render()
   };
 };

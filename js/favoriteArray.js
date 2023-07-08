@@ -1,1 +1,1 @@
-export let favoriteArray = JSON.parse(localStorage.getItem('weather')) ?? [];
+export let favoriteArray = new Set (JSON.parse(localStorage.getItem('weather'))) ?? new Set();
